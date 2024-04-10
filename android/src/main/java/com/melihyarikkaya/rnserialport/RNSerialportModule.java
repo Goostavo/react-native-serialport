@@ -171,7 +171,8 @@ public class RNSerialportModule extends ReactContextBaseJavaModule {
     filter.addAction(ACTION_USB_PERMISSION);
     filter.addAction(ACTION_USB_ATTACHED);
     filter.addAction(ACTION_USB_DETACHED);
-    reactContext.registerReceiver(mUsbReceiver, filter);
+    int flag_RECEIVER_EXPORTED = 2; // hardcode the constant to avoid build error in SDK < 34
+    reactContext.registerReceiver(mUsbReceiver, filter, flag_RECEIVER_EXPORTED);
   }
 
   private void fillDriverList() {
